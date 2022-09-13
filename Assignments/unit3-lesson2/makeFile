@@ -1,0 +1,25 @@
+#make file by radwa mahmoud
+CC=arm-none-eabi-
+CFLAGS=-g -mcpu=arm926ej-s
+INCS=-I .
+LIBS=
+SRC=$(wildcard *.c)
+OBJ=$(SRC:.c=.o)
+As=$(wildcard *.s)
+AsOBJ=$(As:.s=.o)
+project_name=learn-in-depth
+all: $(project_name).bin
+	@echo "everything done"
+$(project_name).bin: $(project_name).elf
+	$(CC)objcopy.exe -O binary $<  $@
+$(project_name).elf: $(OBJ) $(AsOBJ)
+	$(CC)ld.exe -T linker_script.ld $(LIBS) $(OBJ) $(AsOBJ) -o $@ -Map=mapfile.map
+%.o: %.c
+	$(CC)gcc.exe $(CFLAGS) $(INCS) -c $< -o $@
+%.o: %.s
+	$(CC)As.exe $(CFLAGS) $< -o $@
+clean:
+	rm *.elf *.bin
+clean_all:
+	rm *.o *.elf *.bin
+	@echo "everything is clean"

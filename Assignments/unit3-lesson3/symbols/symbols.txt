@@ -1,0 +1,37 @@
+/* symbols for each .o file and final executable by radwa mahmoud */
+main.o :
+	00000000 T main
+	00000000 D p
+startup.o :
+	00000000 W Bus_fault_Handler
+	00000000 T default_Handler
+        	 U E_BSS
+         	U E_DATA
+     	    U E_TEXT
+	00000000 W H_fault_Handler
+        	 U main
+	00000000 W MM_fault_Handler
+	00000000 W NMI_Handler
+	0000000c T reset_Handler
+  	       	U S_BSS
+   		U S_DATA
+		U stack_top
+	00000000 W Usage_fault_Handler
+	00000000 D vectors
+final executable file :
+	08000098 W Bus_fault_Handler
+	08000098 T default_Handler
+	20000004 B E_BSS
+	20000004 D E_DATA
+	08000128 T E_TEXT
+	08000098 W H_fault_Handler
+	0800001c T main
+	08000098 W MM_fault_Handler
+	08000098 W NMI_Handler
+	20000000 D p
+	080000a4 T reset_Handler
+	20000004 B S_BSS
+	20000000 D S_DATA
+	20001004 B stack_top
+	08000098 W Usage_fault_Handler
+	08000000 T vectors

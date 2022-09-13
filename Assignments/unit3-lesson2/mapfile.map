@@ -9,60 +9,60 @@ Linker script and memory map
 
                 0x00010000                . = 0x10000
 
-.startup        0x00010000        0xc
+.startup        0x00010000       0x10
  startup.o(.text)
- .text          0x00010000        0xc startup.o
+ .text          0x00010000       0x10 startup.o
                 0x00010000                reset
 
-.text           0x0001000c       0x6c
+.text           0x00010010       0x6c
  *(.text)
- .text          0x0001000c       0x18 app.o
-                0x0001000c                main
- .text          0x00010024       0x50 uart.o
-                0x00010024                UART_TRANSMIT
+ .text          0x00010010       0x18 app.o
+                0x00010010                main
+ .text          0x00010028       0x50 uart.o
+                0x00010028                UART_TRANSMIT
  *(.rodata)
- .rodata        0x00010074        0x4 app.o
-                0x00010074                x
+ .rodata        0x00010078        0x4 app.o
+                0x00010078                x
 
-.glue_7         0x00010078        0x0
+.glue_7         0x0001007c        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00010078        0x0
+.glue_7t        0x0001007c        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00010078        0x0
+.vfp11_veneer   0x0001007c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00010078        0x0
+.v4_bx          0x0001007c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00010078        0x0
+.iplt           0x0001007c        0x0
  .iplt          0x00000000        0x0 startup.o
 
-.rel.dyn        0x00010078        0x0
+.rel.dyn        0x0001007c        0x0
  .rel.iplt      0x00000000        0x0 startup.o
 
-.data           0x00010078       0x64
+.data           0x0001007c       0x64
  *(.data)
- .data          0x00010078        0x0 startup.o
- .data          0x00010078       0x64 app.o
-                0x00010078                send
- .data          0x000100dc        0x0 uart.o
+ .data          0x0001007c        0x0 startup.o
+ .data          0x0001007c       0x64 app.o
+                0x0001007c                send
+ .data          0x000100e0        0x0 uart.o
 
-.igot.plt       0x000100dc        0x0
+.igot.plt       0x000100e0        0x0
  .igot.plt      0x00000000        0x0 startup.o
 
-.bss            0x000100dc        0x0
+.bss            0x000100e0        0x0
  *(.bss)
- .bss           0x000100dc        0x0 startup.o
- .bss           0x000100dc        0x0 app.o
- .bss           0x000100dc        0x0 uart.o
+ .bss           0x000100e0        0x0 startup.o
+ .bss           0x000100e0        0x0 app.o
+ .bss           0x000100e0        0x0 uart.o
  *(COMMON)
-                0x000110dc                . = (. + 0x1000)
-                0x000110dc                stack_top = .
-LOAD startup.o
+                0x000110e0                . = (. + 0x1000)
+                0x000110e0                stack_top = .
 LOAD app.o
 LOAD uart.o
+LOAD startup.o
 OUTPUT(learn-in-depth.elf elf32-littlearm)
 
 .ARM.attributes
@@ -79,24 +79,38 @@ OUTPUT(learn-in-depth.elf elf32-littlearm)
                                  0x12 (size before relaxing)
  .comment       0x00000000       0x12 uart.o
 
-.debug_info     0x00000000       0x5a
- .debug_info    0x00000000       0x5a uart.o
+.debug_line     0x00000000       0xac
+ .debug_line    0x00000000       0x3a startup.o
+ .debug_line    0x0000003a       0x35 app.o
+ .debug_line    0x0000006f       0x3d uart.o
 
-.debug_abbrev   0x00000000       0x51
- .debug_abbrev  0x00000000       0x51 uart.o
+.debug_info     0x00000000      0x169
+ .debug_info    0x00000000       0x87 startup.o
+ .debug_info    0x00000087       0x88 app.o
+ .debug_info    0x0000010f       0x5a uart.o
 
-.debug_loc      0x00000000       0x2c
- .debug_loc     0x00000000       0x2c uart.o
+.debug_abbrev   0x00000000       0xd7
+ .debug_abbrev  0x00000000       0x14 startup.o
+ .debug_abbrev  0x00000014       0x72 app.o
+ .debug_abbrev  0x00000086       0x51 uart.o
 
-.debug_aranges  0x00000000       0x20
+.debug_aranges  0x00000000       0x60
  .debug_aranges
-                0x00000000       0x20 uart.o
+                0x00000000       0x20 startup.o
+ .debug_aranges
+                0x00000020       0x20 app.o
+ .debug_aranges
+                0x00000040       0x20 uart.o
 
-.debug_line     0x00000000       0x3d
- .debug_line    0x00000000       0x3d uart.o
+.debug_loc      0x00000000       0x58
+ .debug_loc     0x00000000       0x2c app.o
+ .debug_loc     0x0000002c       0x2c uart.o
 
-.debug_str      0x00000000       0x84
- .debug_str     0x00000000       0x84 uart.o
+.debug_str      0x00000000       0xaa
+ .debug_str     0x00000000       0x95 app.o
+ .debug_str     0x00000095       0x15 uart.o
+                                 0x84 (size before relaxing)
 
-.debug_frame    0x00000000       0x28
- .debug_frame   0x00000000       0x28 uart.o
+.debug_frame    0x00000000       0x54
+ .debug_frame   0x00000000       0x2c app.o
+ .debug_frame   0x0000002c       0x28 uart.o
