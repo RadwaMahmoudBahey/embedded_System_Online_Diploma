@@ -36,14 +36,15 @@ typedef union {
 volatile port* p = (volatile port*)(PORTA_BASE + 0x0c);
 int main(void)
 {
+	int i;
 	RCC_APB2ENR |= 1<<2;
 	GPIOA_CRH   &= 0xFF0FFFFF;
 	GPIOA_CRH   |= 0x00200000;
 	while(1){
 		p->pin.pin13 =1;
-		for(int i =0 ; i<3000 ; i++);
+		for( i =0 ; i<3000 ; i++);
 		p->pin.pin13 =0;
-		for(int i =0 ; i<3000 ; i++);
+		for(i =0 ; i<3000 ; i++);
 	}
 	return 0;
 }

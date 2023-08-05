@@ -28,15 +28,16 @@ void default_Handler(void){
 	reset_Handler();
 }
 void reset_Handler(void){
+	int i;
 	unsigned int DATA_SIZE = (unsigned char*)&E_DATA - (unsigned char*)&S_DATA ;
 	unsigned int BSS_SIZE = (unsigned char*)&E_BSS - (unsigned char*)&S_BSS;
 	unsigned char* prom = (unsigned char*)&E_TEXT;
 	unsigned char* pram = (unsigned char*)&S_DATA;
-	for(int i=0 ; i<DATA_SIZE ; i++){
+	for(i=0 ; i<DATA_SIZE ; i++){
 		*((unsigned char*)pram++)= *((unsigned char*)prom++);
 	}
 	pram = (unsigned char*)&S_BSS;
-	for(int i=0 ; i<BSS_SIZE ; i++){
+	for( i=0 ; i<BSS_SIZE ; i++){
 		*((unsigned char*)pram++)= (unsigned char)0;
 	}
 	main();
