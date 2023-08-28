@@ -20,20 +20,24 @@ void GPIO_init(){
 
 	//ROWS
 	pinConfig.PinNo = R0;
-	pinConfig.Mode = GPIO_MODE_INPUT_PUR;
+	pinConfig.Mode = GPIO_MODE_OUTPUT_PP;
+	pinConfig.speed =OUTPUT_SPEED_2M;
 	MCAL_GPIO_INIT(KPD_PORT, &pinConfig);
 
 
 	pinConfig.PinNo = R1;
-	pinConfig.Mode = GPIO_MODE_INPUT_PUR;
+	pinConfig.Mode = GPIO_MODE_OUTPUT_PP;
+	pinConfig.speed =OUTPUT_SPEED_2M;
 	MCAL_GPIO_INIT(KPD_PORT, &pinConfig);
 
 	pinConfig.PinNo = R2;
-	pinConfig.Mode = GPIO_MODE_INPUT_PUR;
+	pinConfig.Mode = GPIO_MODE_OUTPUT_PP;
+	pinConfig.speed =OUTPUT_SPEED_2M;
 	MCAL_GPIO_INIT(KPD_PORT, &pinConfig);
 
 	pinConfig.PinNo = R3;
-	pinConfig.Mode = GPIO_MODE_INPUT_PUR;
+	pinConfig.Mode = GPIO_MODE_OUTPUT_PP;
+	pinConfig.speed =OUTPUT_SPEED_2M;
 	MCAL_GPIO_INIT(KPD_PORT, &pinConfig);
 	//COLUMNS
 	pinConfig.PinNo = C0;
