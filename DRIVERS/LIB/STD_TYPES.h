@@ -11,6 +11,15 @@ typedef float f32;
 typedef double f64;
 typedef long double f96;
 
+typedef unsigned char uint8_t;
+typedef unsigned char* ptr_uint8_t;
 
+
+typedef unsigned char			STATUS_t ;
+#define OK  		(STATUS_t)0x00
+#define NOK  		(STATUS_t)0x01
+
+typedef void(* ptr_func)(void);
+#define NULL_PTR  		(void *)0
 
 #endif
