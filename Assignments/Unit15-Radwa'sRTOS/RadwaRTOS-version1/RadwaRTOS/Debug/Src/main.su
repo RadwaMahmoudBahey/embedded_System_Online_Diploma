@@ -1,0 +1,4 @@
+main.c:30:6:Task_A	4	static
+main.c:34:6:Task_B	4	static
+main.c:38:6:Task_C	4	static
+main.c:43:5:main	16	static
