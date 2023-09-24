@@ -7,7 +7,7 @@
  ******************************************************************************
  */
  
-Create Your RTOS Scheduler 
+Create  RTOS Scheduler 
 
 
 Prerequisites
