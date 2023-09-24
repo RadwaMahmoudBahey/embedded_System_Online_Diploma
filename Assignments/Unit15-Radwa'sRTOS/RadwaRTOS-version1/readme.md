@@ -11,8 +11,11 @@ Create Your RTOS Scheduler
 
 
 Prerequisites
+
  MYRTOS Layers
+ 
 Create Main Stack/Stack for each Task 
+
 Create TaskControlFrame (Context Switch/Restore)
 Create Tasks Queues/Buffers
 Create Scheduling Algorithm
