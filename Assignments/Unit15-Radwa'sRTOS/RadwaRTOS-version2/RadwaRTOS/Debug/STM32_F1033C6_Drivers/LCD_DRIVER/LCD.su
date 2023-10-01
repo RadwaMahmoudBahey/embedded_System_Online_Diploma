@@ -1,0 +1,10 @@
+LCD.c:6:6:wait_ms	24	static
+LCD.c:12:6:LCD_DATA_PORT_OUTPUT	16	static
+LCD.c:77:6:LCD_Init	8	static
+LCD.c:106:6:LCD_Command	16	static
+LCD.c:130:6:LCD_Char	16	static
+LCD.c:152:6:LCD_String	24	static
+LCD.c:168:6:LCD_IsBusy	16	static
+LCD.c:214:6:LCD_Kick	8	static
+LCD.c:221:6:LCD_GoToXY	16	static
+LCD.c:232:6:LCD_ClearScreen	8	static
