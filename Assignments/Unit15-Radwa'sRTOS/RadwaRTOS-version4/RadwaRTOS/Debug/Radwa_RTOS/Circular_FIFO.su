@@ -1,0 +1,5 @@
+Circular_FIFO.c:12:6:FIFO_PRINT	24	static
+Circular_FIFO.c:30:8:FIFO_INIT	24	static
+Circular_FIFO.c:52:8:FIFO_enqueue	16	static
+Circular_FIFO.c:85:8:FIFO_dequeue	16	static
+Circular_FIFO.c:115:8:FIFO_IS_FULL	16	static
